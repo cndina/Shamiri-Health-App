@@ -1,8 +1,18 @@
 {
+  "name": "Shamiri Health",
+  "displayName": "Shamiri Health",
   "expo": {
-    "name": "shamiri-health",
-    "slug": "shamiri-health",
+    "name": "Shamiri Health",
+    "slug": "shamiri-health-app",
     "version": "1.0.0",
+    "description": "This is a medical app to track mental welfare",
+    "orientation": "portrait",
+    "icon": "./assets/icon_medical.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "assetBundlePatterns": [
       "**/*"
     ]

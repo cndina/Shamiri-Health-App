@@ -56,9 +56,9 @@ const Daily = ({ navigation }) => {
           <Image
             style={styles.summaryCircleIcon}
             resizeMode="contain"
-            source={require("../assets/Ring.svg")}
+            source={require("../assets/Ring.png")}
           />
-          <View style={styles.ratings}>
+          <View style={[styles.ratings, styles.shadowProp]}>
             {todayMetrics &&
               todayMetrics.map((today, idx) => (
                 <View key={idx} style={styles.ratingContainer}>
@@ -95,7 +95,7 @@ const Daily = ({ navigation }) => {
                   <Image
                     style={styles.icon}
                     resizeMode="contain"
-                    source={require("../assets/down_pointed_arrow.svg")}
+                    source={require("../assets/down_pointed_arrow.png")}
                   />
                   <Text style={styles.weeklyStatHighlight}>20%</Text>
                 </View>
@@ -109,7 +109,7 @@ const Daily = ({ navigation }) => {
             <Image
               style={styles.barGraph}
               resizeMode="contain"
-              source={require("../assets/bar_graph.svg")}
+              source={require("../assets/bar_graph.png")}
             />
           </View>
           <View style={styles.weeklyDivider}></View>
@@ -118,9 +118,9 @@ const Daily = ({ navigation }) => {
             <Image
               style={styles.recommendationCard}
               resizeMode="contain"
-              source={require("../assets/recommendation_note_card.svg")}
+              source={require("../assets/recommendation_note_card.png")}
             />
-            <View style={styles.recommendationCardTextContainer}>
+            <View style={[styles.recommendationCardTextContainer, styles.shadowProp]}>
               <Text style={styles.recommendationCardTextFade}>
                 1-on-1 Session
               </Text>
@@ -167,6 +167,12 @@ const styles = StyleSheet.create({
     height: 234,
     marginLeft: 34,
   },
+  shadowProp: {
+    shadowColor: "rgb(208, 200, 200)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 34,
+  },
   ratings: {
     width: 308,
     height: 297,
@@ -176,7 +182,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: 20,
     marginTop: 19,
-    boxShadow: "0px 4px 34px rgba(208, 200, 200, 0.2)",
     backgroundColor: "white",
   },
   ratingContainer: {
@@ -184,7 +189,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",
-    alignItems: "",
     marginBottom: 16,
   },
   top: {
@@ -197,7 +201,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontStyle: "normal",
-    fontWeight: 500,
+    fontWeight: "500",
     fontSize: 12,
     lineHeight: 21,
     display: "flex",
@@ -217,7 +221,7 @@ const styles = StyleSheet.create({
     marginTop: 18,
   },
   weeklyTitle: {
-    fontWeight: 600,
+    fontWeight: "600",
     fontSize: 14,
     lineHeight: 21,
     display: "flex",
@@ -225,7 +229,7 @@ const styles = StyleSheet.create({
     color: "#000000",
   },
   weeklyLowerTitle: {
-    fontWeight: 700,
+    fontWeight: "700",
     fontSize: 16,
     lineHeight: 23,
     display: "flex",
@@ -237,33 +241,34 @@ const styles = StyleSheet.create({
   weeklyRow: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
-    width: "100%",
+    width: 313,
+    justifyContent: 'space-between',
     marginTop: 10,
   },
   weeklyStat: {
     display: "flex",
-    flexDirection: "columns",
+    flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
-    height: 40,
+    height: 44,
+    width: 84
   },
   weeklyStatText: {
     fontStyle: "normal",
-    fontWeight: 500,
+    fontWeight: "500",
     fontSize: 10,
     lineHeight: 12,
     color: "#979797",
   },
   weeklyStatHighlight: {
     fontStyle: "normal",
-    fontWeight: 500,
+    fontWeight: "500",
     fontSize: 24,
-    lineHeight: 14,
+    lineHeight: 30,
     display: "flex",
     alignItems: "center",
-    color: "#E3A89F",
+    color: "#E3A89F"
   },
   weeklyPercentage: {
     display: "flex",
@@ -273,7 +278,9 @@ const styles = StyleSheet.create({
     width: "120%",
   },
   weeklyDivider: {
-    border: "1px solid #C4C4C4",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "#C4C4C4",
     height: 1,
     width: "100%",
     overflow: "hidden",
@@ -286,8 +293,7 @@ const styles = StyleSheet.create({
   },
   recommendationCard: {
     width: 309,
-    height: 147,
-    transform: "scale(1)",
+    height: 147
   },
   recommendationCardTextContainer: {
     backgroundColor: "white",
@@ -295,7 +301,6 @@ const styles = StyleSheet.create({
     marginTop: 0,
     height: 55,
     marginBottom: 15,
-    boxShadow: "0px 4px 34px rgba(208, 200, 200, 0.2)",
   },
   recommendationCardTextFade: {
     fontStyle: "normal",
@@ -310,7 +315,7 @@ const styles = StyleSheet.create({
   },
   recommendationCardText: {
     fontStyle: "normal",
-    fontWeight: 500,
+    fontWeight: "500",
     fontSize: 10,
     lineHeight: 14,
     marginLeft: 16,
