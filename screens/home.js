@@ -4,10 +4,11 @@ import {
   Text,
   View,
   Image,
-  Dimensions,
-  TouchableOpacity
+  Dimensions
 } from "react-native";
-
+import { 
+  TouchableOpacity
+} from 'react-native-gesture-handler';
 const { width: screenWidth, height: screenHeight } = Dimensions.get('screen');
 
 const metricList = [
@@ -201,7 +202,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#ffffff",
     width: "100%",
-    height: 'auto'
+    height: "100%",
   },
   bannerContain: {
     flexDirection: "column",
@@ -222,13 +223,13 @@ const styles = StyleSheet.create({
     zIndex: 5,
     elevation: 5,
     position: "absolute",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fcfcfc",
     borderTopRightRadius: 30,
     width: "100%",
-    minHeight: 0.8*screenHeight,
+    minHeight: 0.8 * screenHeight,
     overflow: "visible",
     top: 280,
-    paddingBottom: 40
+    paddingBottom: 40,
   },
   expandedBannerContain: {
     flexDirection: "column",
@@ -249,10 +250,10 @@ const styles = StyleSheet.create({
     zIndex: 5,
     elevation: 5,
     position: "absolute",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fcfcfc",
     borderTopRightRadius: 30,
     width: "100%",
-    height: 0.3*screenHeight,
+    height: 0.4 * screenHeight,
     overflow: "visible",
     top: 509,
   },
@@ -261,7 +262,7 @@ const styles = StyleSheet.create({
     width: 297,
     marginLeft: 26,
     marginBottom: 15,
-    marginTop: 14
+    marginTop: 14,
   },
   wellnessSection: {
     display: "flex",
@@ -274,8 +275,8 @@ const styles = StyleSheet.create({
   },
   shadowProp: {
     shadowColor: "rgb(208, 200, 200)",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
+    shadowOffset: { width: 3, height: 6 },
+    shadowOpacity: 0.4,
     shadowRadius: 34,
   },
   banner: {
@@ -290,6 +291,7 @@ const styles = StyleSheet.create({
   },
   lowerBar: {
     flexDirection: "row-reverse",
+    alignItems: "center",
     width: "95%",
     marginTop: 10,
   },
@@ -299,7 +301,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     width: 107,
-    marginTop: 30,
+    marginTop: 40,
     fontStyle: "normal",
     fontWeight: "bold",
     fontSize: 30,
@@ -313,7 +315,7 @@ const styles = StyleSheet.create({
   subHeaderText: {
     /* Paragraph/P1 */
     fontStyle: "normal",
-    fontWeight: '500',
+    fontWeight: "500",
     fontSize: 15,
     lineHeight: 20,
     /* identical to box height, or 162% */
@@ -324,7 +326,7 @@ const styles = StyleSheet.create({
     marginLeft: 41,
   },
   paragraphText: {
-    fontWeight: '600',
+    fontWeight: "600",
     fontSize: 12,
     lineHeight: 22,
     color: "white",
@@ -378,7 +380,7 @@ const styles = StyleSheet.create({
   summaryCircleIcon: {
     width: 141,
     height: 141,
-    marginLeft: 23
+    marginLeft: 23,
   },
   summaryEllipseIcon: {
     width: 4.7,
@@ -388,7 +390,7 @@ const styles = StyleSheet.create({
     flex: 3,
     width: "90%",
     height: "70%",
-    marginLeft: 20
+    marginLeft: 20,
   },
   summarySideInfoRow: {
     width: "100%",
@@ -406,7 +408,7 @@ const styles = StyleSheet.create({
     color: "#979797",
   },
   summarySideInfoRowMoreText: {
-    fontWeight: '600',
+    fontWeight: "600",
     fontSize: 10,
     lineHeight: 20,
     display: "flex",
@@ -416,10 +418,12 @@ const styles = StyleSheet.create({
   summaryLowerBar: {
     marginTop: 15,
     flexDirection: "row-reverse",
+    alignItems: "center",
     width: "90%",
   },
   wellnessLowerBar: {
     flexDirection: "row-reverse",
+    alignItems: "center",
     width: "95%",
   },
   wellnessTitle: {
