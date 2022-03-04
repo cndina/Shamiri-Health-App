@@ -4,7 +4,7 @@ this is the user interface for a medical app dashboard that allows users to acce
 ### Links
 
 the UI is available on expo:
-- [Shamiri Health]()
+- [Shamiri Health](https://expo.dev/@ipaullly/shamiri-health-app)
 
 the minimal UI is built using React Native  and Expo CLI. the docs are available at:
 - [React Native](https://reactnative.dev/)
