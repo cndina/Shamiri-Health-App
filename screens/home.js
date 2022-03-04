@@ -4,11 +4,13 @@ import {
   Text,
   View,
   Image,
-  Dimensions
+  Dimensions,
+  Platform
 } from "react-native";
 import { 
   TouchableOpacity
 } from 'react-native-gesture-handler';
+
 const { width: screenWidth, height: screenHeight } = Dimensions.get('screen');
 
 const metricList = [
@@ -170,7 +172,7 @@ const Home = ({ navigation }) => {
           style={[
             styles.expandedBanner,
             {
-              transform: [{ scale: 1.3 }],
+              transform: [{ scale: Platform.OS === 'ios'? 1.4:1.3 }],
             },
           ]}
           resizeMode="contain"
@@ -201,21 +203,21 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
     backgroundColor: "#ffffff",
-    width: "100%",
-    height: "100%",
+    width: screenWidth,
+    height: screenHeight,
   },
   bannerContain: {
     flexDirection: "column",
     backgroundColor: "hsla(165, 30%, 63%, 1)",
     alignItems: "flex-start",
     width: "100%",
-    height: 280,
-    borderBottomLeftRadius: 30,
+    height: 0.4 * screenHeight,
+    borderBottomLeftRadius: 0.083 * screenWidth,
     zIndex: -3,
     elevation: -3,
-    paddingLeft: 30,
+    paddingTop: Platform.OS === "ios" ? 0 : 30,
+    // paddingLeft: 0.083 * screenWidth,
     position: "absolute",
   },
   lowerSection: {
@@ -228,9 +230,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fcfcfc",
     borderTopRightRadius: 30,
     width: "100%",
-    minHeight: 0.8 * screenHeight,
+    // minHeight: 0.6 * screenHeight,
     overflow: "visible",
-    top: 280,
+    top: 0.4 * screenHeight,
     paddingBottom: 40,
   },
   expandedBannerContain: {
@@ -238,11 +240,14 @@ const styles = StyleSheet.create({
     backgroundColor: "hsla(165, 30%, 63%, 1)",
     alignItems: "flex-start",
     width: "100%",
-    height: 509,
-    borderBottomLeftRadius: 30,
+    height: Platform.OS === "ios" ? 0.7 * screenHeight : 0.68 * screenHeight,
+    borderBottomLeftRadius: 0.083 * screenWidth,
     zIndex: -3,
     elevation: -3,
-    paddingLeft: 30,
+    paddingLeft: Platform.OS === "ios" ? 0.01 * screenWidth : 0 * screenWidth,
+    paddingTop:
+      Platform.OS === "ios" ? 0 * screenHeight : 0.01875 * screenHeight,
+    // paddingLeft: 0.083 * screenWidth,
     position: "absolute",
   },
   expandedLowerSection: {
@@ -257,14 +262,16 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 0.4 * screenHeight,
     overflow: "visible",
-    top: 509,
+    top: Platform.OS === "ios" ? 0.7 * screenHeight : 0.68 * screenHeight,
   },
   expandedBanner: {
-    height: 336,
-    width: 297,
-    marginLeft: 26,
-    marginBottom: 15,
-    marginTop: 14,
+    height: 0.42 * screenHeight,
+    width: 0.82 * screenWidth,
+    marginLeft: Platform.OS === "ios" ? 0.07 * screenWidth : 0.1 * screenWidth,
+    marginBottom:
+      Platform.OS === "ios" ? 0.04 * screenHeight : 0.03 * screenHeight,
+    marginTop:
+      Platform.OS === "ios" ? 0.03 * screenHeight : 0.0175 * screenHeight,
   },
   wellnessSection: {
     display: "flex",
@@ -282,9 +289,11 @@ const styles = StyleSheet.create({
     shadowRadius: 34,
   },
   banner: {
-    height: 137,
-    width: 297,
-    marginLeft: 26,
+    height: Platform.OS === "ios" ? 0.19 * screenHeight : 0.17 * screenHeight,
+    width: 0.82 * screenWidth,
+    marginBottom:
+      Platform.OS === "ios" ? 0 * screenHeight : 0.01 * screenHeight,
+    marginLeft: Platform.OS === "ios" ? 0.07 * screenWidth : 0.09 * screenWidth,
   },
   icon: {
     width: 11,
@@ -296,7 +305,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "95%",
     marginTop: 10,
-    marginBottom: 7
+    marginBottom: 7,
   },
   button: {
     flexDirection: "row-reverse",
@@ -304,10 +313,10 @@ const styles = StyleSheet.create({
   },
   headerText: {
     width: 107,
-    marginTop: 40,
+    marginTop: Platform.OS === "ios" ? 40 : 50,
     fontStyle: "normal",
     fontWeight: "bold",
-    fontSize: 30,
+    fontSize: Platform.OS === "ios" ? 30 : 35,
     lineHeight: 37,
     /* identical to box height, or 37 */
     letterSpacing: -1,
@@ -319,8 +328,8 @@ const styles = StyleSheet.create({
     /* Paragraph/P1 */
     fontStyle: "normal",
     fontWeight: "500",
-    fontSize: 15,
-    lineHeight: 20,
+    fontSize: Platform.OS === "ios" ? 15 : 20,
+    lineHeight: Platform.OS === "ios" ? 20 : 25,
     /* identical to box height, or 162% */
     letterSpacing: -0.5,
     color: "#FFFFFF",
@@ -330,7 +339,7 @@ const styles = StyleSheet.create({
   },
   paragraphText: {
     fontWeight: "600",
-    fontSize: 12,
+    fontSize: Platform.OS === "ios" ? 12 : 14,
     lineHeight: 22,
     color: "white",
   },
@@ -348,7 +357,7 @@ const styles = StyleSheet.create({
   summaryContainerTop: {
     backgroundColor: "#FFFFFF",
     width: 350,
-    height: 212,
+    height: Platform.OS === "ios" ? 192 : 212,
     paddingBottom: 20,
     paddingTop: 10,
     borderRadius: 12,
@@ -358,7 +367,7 @@ const styles = StyleSheet.create({
   summaryContainer: {
     backgroundColor: "#FFFFFF",
     width: 350,
-    height: 192,
+    height: Platform.OS === "ios" ? 180 : 192,
     paddingTop: 5,
     borderRadius: 12,
     marginBottom: 5,
@@ -405,7 +414,7 @@ const styles = StyleSheet.create({
   summarySideInfoRowText: {
     display: "flex",
     flexDirection: "row",
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
     fontStyle: "normal",
     fontWeight: "normal",
     marginLeft: 7,
