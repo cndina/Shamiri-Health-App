@@ -58,17 +58,16 @@ const Home = ({ navigation }) => {
           source={require("../assets/weekly_view.png")}
         />
         <View style={styles.lowerBar}>
-          <TouchableOpacity
-            onPress={() => showMoreLess()}
-            style={styles.button}
-          >
-            <Image
-              style={styles.icon}
-              resizeMode="contain"
-              source={require("../assets/down.png")}
-            />
+          <TouchableOpacity onPress={() => showMoreLess()}>
+            <View style={styles.button}>
+              <Image
+                style={styles.icon}
+                resizeMode="contain"
+                source={require("../assets/down.png")}
+              />
+              <Text style={styles.paragraphText}>Show More</Text>
+            </View>
           </TouchableOpacity>
-          <Text style={styles.paragraphText}>Show More</Text>
         </View>
         <View style={styles.extraSection}></View>
       </View>
@@ -108,15 +107,17 @@ const Home = ({ navigation }) => {
               <View style={styles.summaryLowerBar}>
                 <TouchableOpacity
                   onPress={() => navigation.navigate("Daily")}
-                  style={styles.button}
+                >
+                <View style={styles.button}
                 >
                   <Image
                     style={styles.icon}
                     resizeMode="contain"
                     source={require("../assets/side-arrow.png")}
                   />
+                  <Text style={styles.summarySideInfoRowMoreText}>More</Text>
+                    </View>
                 </TouchableOpacity>
-                <Text style={styles.summarySideInfoRowMoreText}>More</Text>
               </View>
             </View>
           </View>
@@ -146,14 +147,16 @@ const Home = ({ navigation }) => {
             />
           </View>
           <View style={styles.wellnessLowerBar}>
-            <TouchableOpacity style={styles.button}>
-              <Image
-                style={styles.icon}
-                resizeMode="contain"
-                source={require("../assets/side-arrow.png")}
-              />
+            <TouchableOpacity>
+              <View style={styles.button}>
+                <Image
+                  style={styles.icon}
+                  resizeMode="contain"
+                  source={require("../assets/side-arrow.png")}
+                />
+                <Text style={styles.summarySideInfoRowMoreText}>More</Text>
+              </View>
             </TouchableOpacity>
-            <Text style={styles.summarySideInfoRowMoreText}>More</Text>
           </View>
         </View>
       </View>
@@ -174,17 +177,16 @@ const Home = ({ navigation }) => {
           source={require("../assets/monthly_view_large.png")}
         />
         <View style={styles.lowerBar}>
-          <TouchableOpacity
-            onPress={() => showMoreLess()}
-            style={styles.button}
-          >
-            <Image
-              style={styles.icon}
-              resizeMode="contain"
-              source={require("../assets/up.png")}
-            />
+          <TouchableOpacity onPress={() => showMoreLess()}>
+            <View style={styles.button}>
+              <Image
+                style={styles.icon}
+                resizeMode="contain"
+                source={require("../assets/up.png")}
+              />
+              <Text style={styles.paragraphText}>Show Less</Text>
+            </View>
           </TouchableOpacity>
-          <Text style={styles.paragraphText}>Show Less</Text>
         </View>
         <View style={styles.extraSection}></View>
       </View>
@@ -294,9 +296,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "95%",
     marginTop: 10,
+    marginBottom: 7
   },
   button: {
-    justifyContent: "center",
+    flexDirection: "row-reverse",
     alignItems: "center",
   },
   headerText: {
@@ -400,16 +403,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   summarySideInfoRowText: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: 'flex-start',
     fontStyle: "normal",
     fontWeight: "normal",
     marginLeft: 7,
-    fontSize: 10,
-    lineHeight: 26,
+    fontSize: 11,
+    lineHeight: 20,
     color: "#979797",
+    // backgroundColor: "pink",
   },
   summarySideInfoRowMoreText: {
     fontWeight: "600",
-    fontSize: 10,
+    fontSize: 11,
     lineHeight: 20,
     display: "flex",
     alignItems: "center",
