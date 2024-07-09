@@ -17,7 +17,7 @@ make sure you have node.js, expo and npm are installed on your local machine
 ### Installation
 clone the repository
 ```
-git clone https://github.com/ipaullly/Shamiri-Health-App.git
+git clone https://github.com/ipaullly/Shamiri-Health-App.giShamiri-Health-App.giy
 ``` 
 cd into the shamiri health app directory and run the command to install all requirements from package.json
 ```
@@ -27,3 +27,4 @@ run the app on a local port by running
 ```
 expo start
 ```
+g

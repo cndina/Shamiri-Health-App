@@ -1,6 +1,10 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-buildscript {
+
+
+
+
+abuildscript {
     ext {
         buildToolsVersion = "29.0.3"
         minSdkVersion = 21
@@ -38,3 +42,129 @@ allprojects {
         maven { url 'https://www.jitpack.io' }
     }
 }
+⁰expo init JournalApp
+cd JournalApp
+expo install typescript
+touch tsconfig.json
+
+   
+  "compilerOptions" {
+    "target" "esnext",
+    "module": "commonjs",
+    "strict": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+JournalApp
+  /src
+      /components
+          /scr              /navigation
+                  /services
+                    
+mkdir backend
+cd backend
+npm init -y
+npm install express jsonwebtoken bcryptjs mongoose body-parser cors
+npm install --save-dev typescript @types/node @types/express @types/jsonwebtoken @types/bcryptjs
+npx tsc --init
+
+{
+      "compilerOptions": {
+          "target": "ES2020",
+              "module": "commonjs",
+                  "strict": true,
+       n              "esModuleInterop": true,
+                          "skipLibCheck": true,
+                              "forceConsistentCasingInFileNames": true,
+                                  "outDir": "./dist"
+                                    },
+                                      "include": ["src/**/*.ts"],
+                                        "exclude": ["node_modules"]
+
+}
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import mongoose from 'mongoose';
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+app.use(bodyParser.json());
+app.use(cors());
+
+mongoose.connect('mongodb://localhost:27017/journalapp', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log('Connected to MongoDB');
+}).catch(err => {
+  console.error(err);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+import { Schema, model } from 'mongoose';
+import bcrypt from 'bcryptjs';
+
+const userSchema = new Schema({
+  username: { type: String, required: true, unique: true },
+    password: { type: String, required: true }
+    });
+
+    userSchema.pre('save', async function(next) {
+      if (this.isModified('password')) {
+          this.password = await bcrypt.hash(this.password, 10);
+            }
+              next();
+              });
+
+              userSchema.methods.comparePassword = async function(password: string) {
+                return bcrypt.compare(password, this.password);
+                };
+
+                export const User = model('User', userSchema)
+
+        import { Router } from 'express';
+import jwt from 'jsonwebtoken';
+import { User } from '../models/User';
+
+const router = Router();
+router.post('/signup', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = new User({ username, password });
+    await user.save();
+    const token = jwt.sign({ id: user._id }, 'your_jwt_secret');
+    res.json({ token });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.post('/login', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+    if (!user || !(await user.comparePassword(password))) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+    const token = jwt.sign({ id: user._id }, 'your_jwt_secret');
+    res.json({ token });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+export default router;  
+
+
+import authRoutes from './routes/auth';
+
+// Other setup code...
+
+app.use('/api/auth', authRoutes);
